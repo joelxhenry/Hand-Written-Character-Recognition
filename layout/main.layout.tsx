@@ -32,7 +32,7 @@ export default function MainLayout() {
         <GridItem h={"full"} rowSpan={2} px={10} colSpan={7}>
           <Box h={"full"}>
             <Heading px={10} pt={20}>Hand-Written Character Recognition</Heading>
-            <HStack h={'full'} alignItems={"center"} justifyContent={"space-around"}>
+            <HStack h={'full'} justifyContent={"space-around"}>
               <ImageComponent />
               <ResultComponent />
             </HStack>
@@ -45,6 +45,7 @@ export default function MainLayout() {
         dropShadow={"xl"}
         background={"blackAlpha.200"}
         p={10}
+        mt={20}
       >
         <Graph />
       </Box>

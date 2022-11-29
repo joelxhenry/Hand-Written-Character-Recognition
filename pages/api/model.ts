@@ -48,9 +48,7 @@ export default async function handler(
     const tensor = tf.tensor(data, [1, 28, 28, 1]);
 
     const tensorR = model.predict(tensor) as tf.Tensor;
-    console.log(JSON.stringify(model));
     const dt = (await tensorR.array()) as number[][];
-
     const response = dt[0].map((val, i) => ({ ch: alph[i], val }));
 
     res.status(200).json({ res: response });

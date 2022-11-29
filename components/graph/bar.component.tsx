@@ -18,10 +18,10 @@ export default function Bar({
       bg={"whiteAlpha.500"}
       h={"100%"}
     >
-      <Box transition={".25s"} px={2} h={`${val * 100}%`} bg={color}>
+      <Box transition={".25s"} px={1} h={`${val * 100}%`} bg={color}>
         <Box>
           <Text
-          fontSize={'sm'}
+          fontSize={'x-small'}
             color={"gray.600"}
             fontWeight={"bold"}
             transform={"rotate(45deg)"}
