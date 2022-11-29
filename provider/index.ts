@@ -12,7 +12,7 @@ export const DataContext = createContext<DataInterface|undefined>(undefined)
 export const useDataContext = () => {
 
   const context = useContext(DataContext)
-  if (!context) throw new Error('Not with context scope')
+  if (!context) throw new Error('Not within context scope')
 
   return context
 }
