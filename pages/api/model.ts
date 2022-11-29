@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getModel } from "../../app/model.server";
-import * as tf from "@tensorflow/tfjs";
+import { tensor, Tensor } from "@tensorflow/tfjs";
 
 type Data = {
   error?: any;
@@ -45,9 +45,9 @@ export default async function handler(
 
   try {
     const model = await getModel();
-    const tensor = tf.tensor(data, [1, 28, 28, 1]);
+    const tn = tensor(data, [1, 28, 28, 1]);
 
-    const tensorR = model.predict(tensor) as tf.Tensor;
+    const tensorR = model.predict(tn) as Tensor;
     const dt = (await tensorR.array()) as number[][];
     const response = dt[0].map((val, i) => ({ ch: alph[i], val }));
 
