@@ -1,44 +1,30 @@
-import { Box, Text } from "@chakra-ui/react";
-import React from "react";
+import { Box, Text, VStack, HStack } from '@chakra-ui/react'
+import React from 'react'
 
 export default function Bar({
   val,
   color,
   ch,
 }: {
-  val: number;
-  color: string;
-  ch: string;
+  val: number
+  color: string
+  ch: string
 }) {
   return (
-    <Box
-      position={"relative"}
-      alignItems={"end"}
-      display={"flex"}
-      bg={"whiteAlpha.500"}
-      h={"100%"}
-    >
-      <Box transition={".25s"} px={1} h={`${val * 100}%`} bg={color}>
-        <Box>
-          <Text
-          fontSize={'x-small'}
-            color={"gray.600"}
-            fontWeight={"bold"}
-            transform={"rotate(45deg)"}
-          >{`${(val * 100).toFixed(1)}%`}</Text>
-        </Box>
-      </Box>
+    <VStack justifyContent={'end'} alignItems={'center'} h={`${val * 100}%`}>
       <Text
-        textColor={"green.900"}
-        fontWeight={"bold"}
-        position={"absolute"}
-        bottom={5}
-        left={0}
-        right={0}
-        textAlign={"center"}
+        fontSize={'x-small'}
+        textColor={'green.900'}
+        fontWeight={'bold'}
+        textAlign={'center'}
+        whiteSpace={'nowrap'}
+        style={{
+          writingMode: 'vertical-lr',
+        }}
       >
-        {ch}
+        {`${ch} ${(val * 100).toFixed(0)}%`}
       </Text>
-    </Box>
-  );
+      <Box h={'full'} p={1} transition={'.25s'} bg={color}></Box>
+    </VStack>
+  )
 }
