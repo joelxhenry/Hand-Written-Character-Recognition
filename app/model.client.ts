@@ -1,5 +1,4 @@
 export const predict = (x_value: number[], onSuccess: (data: any) => void) => {
-  // console.log(x_value)/;
   fetch("api/model", {
     method: "POST",
     body: JSON.stringify(x_value),

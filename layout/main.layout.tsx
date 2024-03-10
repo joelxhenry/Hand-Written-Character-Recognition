@@ -1,4 +1,4 @@
-import { Heading, Box, Grid, GridItem, VStack } from '@chakra-ui/react'
+import { Heading, Box, Grid, GridItem } from '@chakra-ui/react'
 import React from 'react'
 import CanvasComponent from '../components/canvas/canvas.component'
 import Graph from '../components/graph/graph.component'
