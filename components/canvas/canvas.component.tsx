@@ -1,9 +1,9 @@
-import { Box, Button } from '@chakra-ui/react'
+import { Box, Button, HStack } from '@chakra-ui/react'
 import React, { useEffect, useRef, useState } from 'react'
 import { useDataContext } from '../../provider'
 
 export default function Canvas() {
-  const { handler } = useDataContext()
+  const { handler, loading } = useDataContext()
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const contextRef = useRef<CanvasRenderingContext2D | null>(null)
   const [isDrawing, setIsDrawing] = useState(false)
@@ -67,7 +67,6 @@ export default function Canvas() {
     const { offsetX, offsetY } = nativeEvent
     contextRef.current?.lineTo(offsetX, offsetY)
     contextRef.current?.stroke()
-    toBlob()
   }
 
   const clear = () => {
@@ -81,10 +80,9 @@ export default function Canvas() {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     redCtx.clearRect(0, 0, redCanvas.width, redCanvas.height)
-    toBlob()
   }
 
-  const toBlob = () => {
+  const onIdentifyCharacter = () => {
     const canvas = canvasRef.current
     const context = contextRef.current
 
@@ -114,17 +112,27 @@ export default function Canvas() {
 
       <canvas ref={reduceCanvas} hidden />
 
-      <Button
-        size={'lg'}
-        colorScheme={'green'}
-        position={'absolute'}
-        bottom={5}
-        right={5}
-        borderRadius={'full'}
-        onClick={clear}
-      >
-        Clear
-      </Button>
+      <HStack position={'absolute'} bottom={5} right={5}>
+        <Button
+          colorScheme="green"
+          size={'lg'}
+          borderRadius={'full'}
+          onClick={clear}
+          isLoading={loading}
+        >
+          Clear
+        </Button>
+        <Button
+          colorScheme="green"
+          size={'lg'}
+          borderRadius={'full'}
+          onClick={onIdentifyCharacter}
+          isLoading={loading}
+          loadingText="Analyzing..."
+        >
+          Identify
+        </Button>
+      </HStack>
     </Box>
   )
 }
