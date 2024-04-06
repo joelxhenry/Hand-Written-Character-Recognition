@@ -8,7 +8,7 @@ import DataProvider from '../provider/data.provider'
 export default function MainLayout() {
   return (
     <DataProvider>
-      <Heading mb={20} mt={5}>
+      <Heading color={'black'} mb={20} mt={5}>
         Hand-Written Character Recognition
       </Heading>
       <Grid
